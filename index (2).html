@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFFFFF">
+<title>大码男装品牌库 · 全球专营索引</title>
+<style>
+:root{
+  --paper:#FFFFFF;
+  --card:#FFFFFF;
+  --ink:#101418;
+  --ink-2:#2A3138;
+  --muted:#6E7681;
+  --line:#E7E9EC;
+  --line-strong:#D3D7DC;
+  --accent:#0A7A55;
+  --accent-2:#12A87B;
+  --accent-soft:#EAF7F1;
+  /* 风格色板：5 类各一色 */
+  --st-shangwu:#2563EB;
+  --st-shangwuxx:#0E7490;
+  --st-xiuxian:#64748B;
+  --st-jietou:#EA580C;
+  --st-youya:#7C3AED;
+  --display:"Baskerville","Palatino Linotype","Book Antiqua","Hoefler Text",Georgia,"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Source Han Sans SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --rail:262px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{padding-top:3px}
+.brandline{
+  position:fixed;left:0;right:0;top:0;height:3px;z-index:120;
+  background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 38%,#43C6A0 62%,#0A7A55 100%);
+}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.68;
+  -webkit-font-smoothing:subpixel-antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+.shell{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) 1fr;min-height:100vh}
+
+/* ============ 侧栏 ============ */
+.rail{
+  border-right:1px solid var(--line);
+  padding:24px 0 34px;
+  position:sticky;top:3px;height:calc(100vh - 3px);overflow-y:auto;
+  display:flex;flex-direction:column;
+  background:var(--card);
+}
+.rail::-webkit-scrollbar{width:4px}
+.rail::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:2px}
+.rail::-webkit-scrollbar-track{background:transparent}
+.rail-head{padding:0 26px 18px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.rail-head .en{font-family:var(--display);font-size:17px;letter-spacing:.12em;font-weight:600;line-height:1.2}
+.rail-head .cn{font-family:var(--serif);font-size:11.5px;color:var(--muted);letter-spacing:.3em;margin-top:5px}
+.rail-head .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--accent);margin-top:9px}
+.nav{padding:4px 0 6px}
+.nav-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);
+  padding:0 26px 10px;text-transform:uppercase;font-weight:500;
+}
+.nav-item{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  width:100%;background:none;border:0;cursor:pointer;
+  padding:7.5px 26px;color:var(--ink-2);border-radius:0;
+  font-family:var(--sans);font-size:13.5px;text-align:left;line-height:1.5;
+  border-left:2px solid transparent;transition:background .16s,color .16s,border-color .16s;
+}
+.nav-item:hover{background:#F6FBF8;color:var(--ink)}
+.nav-item.on{background:var(--accent-soft);border-left-color:var(--accent);color:var(--accent);font-weight:600}
+.nav-item .nm{display:flex;align-items:center;gap:8px;min-width:0}
+.nav-item .dot{width:5px;height:5px;border-radius:50%;background:var(--line-strong);flex:none;transition:background .16s}
+.nav-item.on .dot{background:var(--accent)}
+.nav-item .ct{font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:.04em;flex:none}
+.nav-item.on .ct{color:var(--accent)}
+.rail-foot{margin-top:auto;padding:18px 26px 0;border-top:1px solid var(--line)}
+.rail-foot p{font-size:10.5px;color:var(--muted);line-height:1.75}
+.rail-foot .sig{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--line-strong);margin-top:12px;text-transform:uppercase}
+
+/* ============ 主区 ============ */
+.main{min-width:0;padding:0 0 72px}
+
+.tools{
+  position:sticky;top:3px;z-index:20;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line);
+  padding:18px 52px 14px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.search{position:relative;flex:1 1 260px;min-width:170px}
+.search input{
+  width:100%;background:var(--card);border:1px solid var(--line-strong);
+  color:var(--ink);font-family:var(--sans);font-size:13.5px;
+  padding:9px 34px 9px 33px;border-radius:5px;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(10,122,85,.12)}
+.search input::placeholder{color:var(--muted)}
+.search .ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}
+.search kbd{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:9px;color:var(--muted);
+  border:1px solid var(--line);border-radius:3px;padding:1px 5px;background:#F7F7F5;
+}
+select.sel{
+  background-color:var(--card);border:1px solid var(--line-strong);color:var(--ink-2);
+  font-family:var(--sans);font-size:13px;padding:9px 28px 9px 12px;border-radius:5px;
+  outline:none;cursor:pointer;appearance:none;transition:border-color .2s,box-shadow .2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6'%3E%3Cpath d='M0 0l4.5 6L9 0z' fill='%238E8E85'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 11px center;
+}
+select.sel:hover{border-color:#C4C0B6}
+select.sel:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(10,122,85,.12);color:var(--ink)}
+.seg{display:flex;background:var(--card);border:1px solid var(--line-strong);border-radius:5px;overflow:hidden}
+.seg button{
+  background:none;border:0;color:var(--muted);cursor:pointer;
+  font-family:var(--sans);font-size:12.5px;padding:9px 15px;transition:.2s;letter-spacing:.01em;
+}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button:hover{color:var(--ink);background:#F7F7F5}
+.seg button.on{background:var(--accent);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 52px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.bar .cnt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted)}
+.bar .cnt b{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.bar .chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  font-family:var(--mono);font-size:10px;letter-spacing:.07em;
+  border:1px solid var(--line-strong);color:var(--muted);background:var(--card);
+  padding:3px 9px;border-radius:4px;cursor:pointer;transition:.2s;
+}
+.chip:hover{color:var(--accent);border-color:rgba(10,122,85,.4);background:var(--accent-soft)}
+.chip.on{border-color:transparent;color:#fff;background:var(--accent);font-weight:600}
+
+/* ============ 表格 ============ */
+.wrap{padding:0 52px}
+.tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.tbl thead th{
+  position:sticky;top:var(--tbh,66px);z-index:8;background:#F7F8F9;
+  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:#5C6570;font-weight:700;text-align:left;
+  padding:12px 12px 10px;border-bottom:1px solid var(--line-strong);
+}
+.tbl tbody tr{border-bottom:1px solid var(--line);transition:background .16s}
+.tbl tbody tr:hover{background:#F6FBF8}
+.tbl tbody tr:hover td.brand{color:var(--accent)}
+.tbl td{padding:13px 12px;vertical-align:top;font-size:13px;color:var(--ink-2);line-height:1.6}
+.tbl td.brand{font-family:var(--display);font-size:16px;color:var(--ink);font-weight:600;letter-spacing:0;line-height:1.34;transition:color .18s}
+.tbl .sub{display:block;font-family:var(--sans);font-size:11.2px;color:var(--muted);margin-top:4px;letter-spacing:0;font-weight:400;line-height:1.55}
+.tbl td.brand .sub{font-family:var(--mono);font-size:10.8px;letter-spacing:.04em;color:#98A0AA}
+.region-tag{
+  display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;font-weight:600;
+  padding:2.5px 7px;border-radius:3px;margin-right:7px;vertical-align:1px;
+  background:#EEF2F7;color:#3F5872;border:1px solid #E1E8F0;
+}
+.r-北美{background:#EAF3FF;color:#1D5FA8;border-color:#D6E6FB}
+.r-欧洲{background:#F2EDFF;color:#5B3BB5;border-color:#E4DBFB}
+.r-亚洲{background:#FFF7E3;color:#8A6B0A;border-color:#F5E9C4}
+.r-大洋洲{background:#E9F8F3;color:#0A7A55;border-color:#D3EEE3}
+.r-非洲{background:#FDECF2;color:#A81E56;border-color:#F8D8E4}
+.r-拉美{background:#FFF0E6;color:#A8560F;border-color:#F8DDC7}
+.r-中东{background:#EAF7E6;color:#3D6B1E;border-color:#D7EDCD}
+.tier{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:3px 8px;border-radius:3px;display:inline-block;white-space:nowrap}
+.t-T1{background:var(--accent);color:#fff;font-weight:700;box-shadow:0 1px 0 rgba(10,122,85,.25)}
+.t-T2{border:1px solid rgba(10,122,85,.38);color:var(--accent);background:var(--accent-soft);font-weight:600}
+.t-T3{border:1px solid var(--line-strong);color:var(--ink-2);background:var(--card)}
+.t-T4{color:var(--muted);border:1px solid var(--line);background:var(--card)}
+.lk{
+  display:inline-flex;align-items:center;gap:4px;color:var(--accent);
+  text-decoration:none;font-size:12px;border-bottom:1px solid transparent;transition:.18s;
+  word-break:break-all;line-height:1.55;
+}
+.lk:hover{color:#086346;border-bottom-color:rgba(10,122,85,.55)}
+.lk i{font-style:normal;font-size:9px;opacity:.45}
+.lk.dim{color:#98A0AA}
+.tbl td.c-basis{font-size:11.4px;color:#5C6570;line-height:1.62}
+.basis-txt{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.basis-txt b{font-weight:600;color:var(--ink-2)}
+.card .basis{
+  margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);
+  font-size:11.3px;color:#6E7681;line-height:1.68;
+}
+.card .basis b{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:#98A0AA;font-weight:600;margin-bottom:4px}
+.price{font-family:var(--mono);font-size:11.2px;color:var(--ink-2);letter-spacing:.01em;white-space:nowrap}
+.price em{font-style:normal;font-size:9px;color:var(--muted);margin-left:3px}
+.sty{display:flex;flex-wrap:wrap;gap:4px}
+.sty span{
+  font-size:11.2px;color:#4E4E49;background:#F4F4F1;
+  padding:2px 7.5px;border-radius:3px;white-space:nowrap;line-height:1.5;
+}
+.sty .m{color:#fff;background:var(--st-xiuxian);font-weight:600;letter-spacing:.01em}
+.sty .m[data-st="商务"]{background:var(--st-shangwu)}
+.sty .m[data-st="商务休闲"]{background:var(--st-shangwuxx)}
+.sty .m[data-st="休闲"]{background:var(--st-xiuxian)}
+.sty .m[data-st="街头"]{background:var(--st-jietou)}
+.sty .m[data-st="优雅"]{background:var(--st-youya)}
+.foc{font-family:var(--mono);font-size:10px;letter-spacing:.05em;padding:3px 8px;border-radius:3px;display:inline-block;white-space:nowrap}
+.f-专营{background:var(--accent);color:#fff;font-weight:700}
+.f-主力{border:1px solid rgba(10,122,85,.4);color:var(--accent);background:var(--accent-soft);font-weight:600}
+.f-延伸{border:1px dashed var(--line-strong);color:var(--muted);background:var(--card)}
+
+/* ============ 判定标准 ============ */
+.defs{margin-top:60px;border-top:1px solid var(--line);padding-top:34px;padding-left:52px;padding-right:52px}
+.defs h4{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.defs .sub2{font-size:12.5px;color:var(--muted);margin-bottom:22px;max-width:760px;line-height:1.85}
+.def-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 40px}
+.def{border-top:1px solid var(--line);padding:15px 0 16px;display:flex;gap:14px;align-items:baseline}
+.def b{font-family:var(--serif);font-size:15.5px;font-weight:600;white-space:nowrap;min-width:74px}
+.def span{font-size:12.2px;color:var(--ink-2);line-height:1.75;flex:1}
+.def i{font-family:var(--mono);font-style:normal;font-size:10.2px;color:var(--muted);white-space:nowrap}
+.def-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;
+  padding:26px 0 0;margin-bottom:-6px}
+.dir-note{margin-top:26px;padding:18px 20px;background:#FAFAF8;border:1px solid var(--line);border-radius:6px}
+.dir-note b{font-size:12.2px;font-weight:600;letter-spacing:.04em}
+.dir-note p{font-size:12.2px;color:var(--ink-2);line-height:1.9;margin-top:8px}
+.dir-note span{font-family:var(--mono);font-size:10.5px;color:#5A5A56;background:#fff;border:1px solid var(--line);
+  padding:1px 7px;border-radius:3px;margin:0 5px 5px 0;display:inline-block}
+
+/* ============ 观察 ============ */
+.obs-sec{margin:60px 52px 0;border-top:1px solid var(--line);padding-top:34px}
+.obs-sec h4{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.obs-sec .sub2{font-size:12.5px;color:var(--muted);margin-bottom:24px;max-width:760px;line-height:1.85}
+.obs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.obs{background:var(--card);padding:22px 22px 24px}
+.obs .n{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+.obs h3{font-family:var(--serif);font-size:15.5px;font-weight:600;line-height:1.5;margin-bottom:8px}
+.obs p{font-size:12.2px;color:var(--ink-2);line-height:1.82}
+.obs p b{font-weight:600;color:var(--ink)}
+
+/* ============ 卡片 ============ */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:24px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:22px 22px 18px;position:relative;min-height:200px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:border-color .2s,box-shadow .24s,transform .24s;
+}
+.card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--st-xiuxian);opacity:.9}
+.card[data-st="商务"]::after{background:var(--st-shangwu)}
+.card[data-st="商务休闲"]::after{background:var(--st-shangwuxx)}
+.card[data-st="休闲"]::after{background:var(--st-xiuxian)}
+.card[data-st="街头"]::after{background:var(--st-jietou)}
+.card[data-st="优雅"]::after{background:var(--st-youya)}
+.card:hover{
+  border-color:rgba(10,122,85,.3);
+  box-shadow:0 8px 26px -14px rgba(26,26,23,.22);
+  transform:translateY(-2px);
+}
+.card::before{
+  content:"";position:absolute;left:22px;right:22px;top:0;height:1px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  opacity:0;transition:opacity .24s;border-radius:8px 8px 0 0;
+}
+.card:hover::before{opacity:.55}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.card h3{font-family:var(--display);font-size:19.5px;font-weight:500;line-height:1.3;letter-spacing:0;color:var(--ink)}
+.card .meta{font-family:var(--mono);font-size:9.8px;letter-spacing:.1em;color:var(--muted);margin-top:8px}
+.card .core{font-size:12.8px;color:var(--ink-2);margin-top:13px;line-height:1.7}
+.card .foot{margin-top:auto;padding-top:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line)}
+.card .links{display:flex;gap:12px}
+
+.empty{padding:96px 52px;text-align:center;color:var(--muted)}
+.empty b{display:block;font-family:var(--serif);font-size:23px;color:var(--ink-2);margin-bottom:8px;font-weight:600}
+
+/* ============ 页脚 ============ */
+.notes{margin:60px 52px 0;border-top:1px solid var(--line);padding-top:32px}
+.notes h4{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:18px}
+.notes dl{display:grid;grid-template-columns:170px 1fr;gap:0;border-top:1px solid var(--line)}
+.notes dt,.notes dd{padding:15px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.82}
+.notes dt{color:var(--ink);font-weight:600;padding-right:20px}
+.notes dd{color:var(--ink-2)}
+.sig{margin:36px 52px 0;display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--line-strong);text-transform:uppercase;flex-wrap:wrap}
+
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.anim{animation:rise .45s cubic-bezier(.22,.61,.36,1) both}
+
+@media(max-width:1080px){
+  :root{--rail:216px}
+  .tools,.bar,.wrap{padding-left:30px;padding-right:30px}
+  .defs{padding-left:30px;padding-right:30px}
+  .obs-sec,.notes,.sig{margin-left:30px;margin-right:30px}
+}
+@media(max-width:860px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:20px 0 6px}
+  .rail-head{padding:0 20px 14px}
+  .rail .nav{display:flex;overflow-x:auto;gap:0;padding:6px 14px 10px;-webkit-overflow-scrolling:touch}
+  .rail .nav::-webkit-scrollbar{display:none}
+  .nav-label{display:none}
+  .nav-item{width:auto;flex:none;border-left:0;border-bottom:2px solid transparent;padding:7px 12px;white-space:nowrap;border-radius:0}
+  .nav-item.on{border-left:0;border-bottom-color:var(--accent);background:none;font-weight:500}
+  .nav-item .ct{margin-left:6px}
+  .rail-foot{display:none}
+  .tools{padding:11px 20px;gap:8px}
+  .search{flex:1 1 100%}
+  .seg{flex:none}
+  .bar{padding:11px 20px}
+  .wrap{padding:0 20px}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody{display:block}
+  .tbl tbody tr{
+    display:flex;flex-wrap:wrap;align-items:center;gap:6px 9px;
+    padding:14px 0;border-bottom:1px solid var(--line);
+  }
+  .tbl td{padding:0;border:0;width:auto;display:block;line-height:1.45}
+  .tbl td.c-brand{flex:0 0 auto;font-size:16px;font-weight:600;padding-right:2px}
+  .tbl td.c-brand .sub{display:inline;margin:0 0 0 7px;font-size:10.5px;vertical-align:1px;color:#98A0AA}
+  .tbl td.c-foc{flex:0 0 auto;order:1}
+  .tbl td.c-mkt{flex:0 0 auto;order:2;font-size:12.5px;color:var(--ink-2)}
+  .tbl td.c-price{flex:0 0 auto;order:3}
+  .tbl td.c-tier{flex:0 0 auto;order:3}
+  .tbl td.c-sty{flex:0 0 auto;order:4;padding-left:2px}
+  .tbl td.c-core{flex:1 1 100%;order:5;font-size:12.5px;color:#6E7681;margin-top:1px}
+  .tbl td.c-core .sub{display:inline;margin-left:6px;font-size:11.5px;color:#98A0AA}
+  .tbl td.c-basis{flex:1 1 100%;order:6;font-size:11.5px;color:#5C6570;margin-top:3px}
+  .basis-txt{-webkit-line-clamp:6}
+  .tbl td.c-link{flex:1 1 100%;order:7;display:flex;gap:16px;flex-wrap:wrap;padding-top:4px}
+  .cards{grid-template-columns:1fr;gap:12px}
+  .defs,.obs-sec{padding-left:20px;padding-right:20px}
+  .obs-sec{margin:44px 0 0}
+  .defs{margin-top:44px}
+  .obs-grid{grid-template-columns:1fr}
+  .notes{margin:44px 20px 0}
+  .notes dl{grid-template-columns:1fr}
+  .notes dt{padding-bottom:0;border-bottom:0}
+  .sig{margin:28px 20px 0}
+  .search kbd{display:none}
+}
+</style>
+</head>
+<body>
+<div class="brandline"></div>
+<div class="shell">
+
+  <aside class="rail">
+    <div class="rail-head">
+      <div class="en">BIG &amp; TALL</div>
+      <div class="cn">大码男装品牌库</div>
+      <div class="n" id="railN">111 BRANDS · 40 MARKETS</div>
+    </div>
+
+    <nav class="nav" id="mktNav">
+      <div class="nav-label">市场 / Market</div>
+    </nav>
+
+    <nav class="nav" id="focusNav">
+      <div class="nav-label">专营度 / Focus</div>
+    </nav>
+
+    <div class="rail-foot">
+      <p>专营度是可核查的定性分档，非销量份额。延伸线默认显示，仅作「大码线 ≠ 大码品牌」的对照。</p>
+      <div class="sig">BRAND LEDGER / 2026</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="tools">
+      <div class="search">
+        <span class="ico">⌕</span>
+        <input id="q" type="search" placeholder="搜索品牌 / 国家 / 风格 / 品类 / 尺码" autocomplete="off">
+        <kbd>/</kbd>
+      </div>
+      <select class="sel" id="mktSel"></select>
+      <select class="sel" id="regSel">
+        <option value="all">全部区域</option>
+        <option value="北美">北美</option>
+        <option value="欧洲">欧洲</option>
+        <option value="亚洲">亚洲</option>
+        <option value="大洋洲">大洋洲</option>
+        <option value="非洲">非洲</option>
+        <option value="拉美">拉美</option>
+        <option value="中东">中东</option>
+      </select>
+      <select class="sel" id="styleSel">
+        <option value="all">全部风格</option>
+        <option value="商务">商务</option>
+        <option value="商务休闲">商务休闲</option>
+        <option value="休闲">休闲</option>
+        <option value="街头">街头</option>
+        <option value="优雅">优雅</option>
+      </select>
+      <select class="sel" id="priceSel">
+        <option value="all">全部价格带</option>
+        <option value="p1">上限 &lt; 80 USD</option>
+        <option value="p2">80–200 USD</option>
+        <option value="p3">200–450 USD</option>
+        <option value="p4">450 USD 以上</option>
+      </select>
+      <select class="sel" id="sortSel">
+        <option value="default">默认排序</option>
+        <option value="focus">专营度优先</option>
+        <option value="depth">尺码深度</option>
+        <option value="price">价格下限</option>
+        <option value="az">品牌 A–Z</option>
+      </select>
+      <div class="seg" id="viewSeg">
+        <button data-view="table" class="on">列表</button>
+        <button data-view="cards">卡片</button>
+      </div>
+    </div>
+
+    <div class="bar">
+      <div class="cnt">显示 <b id="shown">0</b> / <span id="total">0</span> 条</div>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="wrap" id="listWrap"></div>
+
+    <section class="defs">
+      <h4>专营度与风格判定标准 / Criteria</h4>
+      <p class="sub2">这个库只回答一个问题：哪些品牌是「真的只做大码」。所以第一层不是风格而是<b>专营度</b>——尺码下限从哪起、纸样是否为大体型单独开发、常规码是否存在。<br>风格只取一个主风格，看主体商品与使用场景，不看偶发单品：有西装线的街头品牌仍归街头，做婚礼物料的连锁仍归商务。</p>
+      <div class="def-sub">Focus · 专营度</div>
+      <div class="def-grid" id="focusGrid" style="margin-top:12px"></div>
+      <div class="def-sub">Style · 风格</div>
+      <div class="def-grid" id="styleGrid" style="margin-top:12px"></div>
+      <div class="dir-note">
+        <b>尺码深度 / Depth</b>
+        <p id="depthList"></p>
+      </div>
+    </section>
+
+    <section class="obs-sec">
+      <h4>八个观察 / Observations</h4>
+      <p class="sub2">把 111 个条目、40 个市场按专营度与尺码深度排开之后，能看出的是结构，而不是「谁家更大」。</p>
+      <div class="obs-grid">
+        <div class="obs"><div class="n">Observation 01</div><h3>专营 ≠ 差异化</h3><p>111 个里 91 个是专营品牌，但差异几乎只落在两处：<b>尺码更深</b>、<b>印花更花</b>。真正重开纸样的不到五个。</p></div>
+        <div class="obs"><div class="n">Observation 02</div><h3>北美是唯一有「目的地型」大码零售的市场</h3><p>DXL 一家握 DXL、Casual Male XL、Rochester 三块招牌，约 290 家店；但正装仍是放码成衣，<b>结构重开没人做规模化</b>。</p></div>
+        <div class="obs"><div class="n">Observation 03</div><h3>英国最卷，卷在图案与话术</h3><p>Bad Rhino、D555、BC4U、Uptheir 都把「大码≠中年」写进视觉，尺码到 8–12XL。<b>但正装几乎缺席</b>，只有 High &amp; Mighty 还在做。</p></div>
+        <div class="obs"><div class="n">Observation 04</div><h3>德语区把大码正装做成了专业店</h3><p>HIRMER 用三层门店 + 店内改衣 + 定制，把大码正装做成服务业；JP1880 用 L–8XL 全品类做规模。<b>全球唯一大码正装有品牌化的区域。</b></p></div>
+        <div class="obs"><div class="n">Observation 05</div><h3>日本靠深度与量体，不靠品牌</h3><p>サカゼン 1946 年创业、约 30 家店、3L–9L；メンズサワ 做到 8L、胸围 180cm。<b>胜在尺码与量体服务，弱在品牌表达</b>，海外无声量。</p></div>
+        <div class="obs"><div class="n">Observation 06</div><h3>中国专营但无版型标准</h3><p>英巴克、panmax、半墨、胖哥哥、大牛博斯都只做大码，尺码通俗到 6XL–10XL，价格压在 ¥100–400。<b>唯一在做版型内容与公斤标码的是胖哥哥</b>。</p></div>
+        <div class="obs"><div class="n">Observation 07</div><h3>拉美：有专营，没有品牌</h3><p>已补到 <b>27 家、14 个国家</b>，其中 26 家是专营，但多数是<b>单店 + WhatsApp 目录</b>：巴西用公斤段（G1 105kg–G5 200kg）、墨西哥用 42–60 号型、巴拿马按 52–66 备货，各国尺码语言互不相通，<b>没有一家公开纸样体系</b>。正装只有布宜诺斯艾利斯、利马、巴拿马城三家在做，且靠定制与租赁而非成衣。委内瑞拉连可核查的官网都没有——这是全球最分散、也最容易被一套尺码标准统一掉的市场。</p></div>
+        <div class="obs"><div class="n">Observation 08</div><h3>「高个」与「大码」是两套版型</h3><p>American Tall 只做高个、XL Kläder 只做围度、Cubavera 用两张尺码表分开 Big（1X–5X）与 Tall（LT–5XLT）、Berle 单独给大码做短/长裆——真正专业的市场已经把 big 与 tall 分开开版。而绝大多数品牌仍用「big &amp; tall」一个词打包，结果两边都不合身：<b>这是比「尺码不够深」更值钱的一处空白</b>。</p></div>
+      </div>
+    </section>
+
+    <section class="notes">
+      <h4>口径与边界 / Methodology</h4>
+      <dl>
+        <dt>收录范围</dt><dd>只收「以大码为主业」的品牌：尺码下限自 L–2XL 起、不做常规码。常规品牌的大码线归入「延伸」，保留 14 条作对照，用来区分「大码线」与「大码品牌」。</dd>
+        <dt>专营度怎么判</dt><dd>三档：专营（无常规码，纸样为大体型开发）、主力（大码是主线但保留常规码）、延伸（常规品牌加出的大码线，版型多为放码）。判据看货架构成，不看官网文案。</dd>
+        <dt>尺码深度</dt><dd>取该品牌公开在售的最大码与关键量度（腰围、胸围、内缝）。不同市场的码数体系不可直接换算，日系 3L–9L 与美系 2XL–14XL 只作纵向深度参考。</dd>
+        <dt>价格带</dt><dd>按主力款吊牌价折 USD，筛选用「该品牌价格区间的上限」分档：&lt;80／80–200／200–450／450 以上。中国、印度、南非品牌的原币价格已折算，汇率波动会造成一档左右的误差。</dd>
+        <dt>市场地位档位</dt><dd>T1–T4 为可核查的定性分档：T1 区域领导者、T2 有品牌资产的专营、T3 稳定专营、T4 长尾与平台型供给。同档不代表体量相同。</dd>
+        <dt>区域覆盖</dt><dd>共 40 个市场：欧洲 25 家（英 10、德 5、意 2、荷 2、瑞典 2、法/比/西/波各 1）、亚洲 23 家（中 8、日 4、印 3、韩/巴各 2、菲 2、泰/台各 1）、北美 23（美 16、加 6、全球 1）、拉美 27、大洋洲 5、非洲 4、中东 4。空白仍在：非洲除南非与尼日利亚外几乎无专营，中东只有阿联酋与以色列，东南亚只有菲泰的零星设计店——这三块是「有需求、无供给」而非「无品牌」。</dd>
+        <dt>拉美的收录边界</dt><dd>本库已覆盖拉美 14 国、27 家：墨西哥 3、巴西 4、哥伦比亚 3、阿根廷 2、智利 2、秘鲁 2、厄瓜多尔 2、乌拉圭 2、危地马拉 2、哥斯达黎加 1、玻利维亚 1、巴拉圭 1、巴拿马 1、委内瑞拉 1。拉美的大码供给多为单店与社媒（WhatsApp／Instagram）经营，缺稳定官网与公开尺码表，因此本库对这类品牌以「—」标注链接，判定依据来自公开陈列与门店页；这也是它此前被漏掉的真实原因——不是没有专营店，而是没有可核查的品牌化主体。</dd>
+        <dt>链接性质</dt><dd>官网为可点击直链，基于公开常见地址整理，未逐个实时验证；部分中国、日本、中国台湾的小体量品牌无稳定官网，标为「—」。</dd>
+      </dl>
+    </section>
+
+    <div class="sig">
+      <span>Big &amp; Tall Menswear Archive</span>
+      <span>111 Brands · 40 Markets · 3 Focus Tiers · Clickable Sources</span>
+    </div>
+  </main>
+</div>
+
+<script>
+const DATA=D=[
+/* 北美 · 美国 */
+{n:"DXL Big + Tall",s:"Destination XL Group",r:"北美",c:"美国",f:"专营",st:"商务休闲",core:"衬衫 · 西裤 · 西装 · 鞋履",p:"25–400",pmin:25,pmax:400,sz:"XL 起（含高个线）",mx:6,t:"T1",d:"北美唯一全国性大码目的地零售，约 290 家店；自有 Harbor Bay、True Nation、Oak Hill、Society of One 等 6 条私标。缺口：正装仍以放码成衣为主。",u:"dxl.com"},
+{n:"Rochester Clothing",s:"DXL 集团旗下",r:"北美",c:"美国",f:"专营",st:"商务",core:"西装 · 西裤 · 礼服",p:"150–400",pmin:150,pmax:400,sz:"大码正装尺码段",mx:5,t:"T1",d:"1906 年创立、2004 年并入大码集团，是北美「大码正装」的事实标准；设计师品牌的大码专供版多由此进入。",u:"rochesterclothing.com"},
+{n:"Casual Male XL",s:"DXL 集团第二招牌",r:"北美",c:"美国",f:"专营",st:"休闲",core:"基础 · 休闲 · 牛仔",p:"25–100",pmin:25,pmax:100,sz:"L–5XL",mx:5,t:"T3",d:"与 DXL 同集团的第二招牌，价格更下沉；消费者常误以为是竞争关系，实际同一家公司。",u:"casualmale.com"},
+{n:"KingSize",s:"FullBeauty Brands",r:"北美",c:"美国",f:"专营",st:"休闲",core:"T恤 · 牛仔裤 · 工装 · 9XL 衬衫",p:"20–80",pmin:20,pmax:80,sz:"至 9XL / 腰至 72″ / 内缝至 38″",mx:9,t:"T3",d:"目录起家 60 余年，尺码深度全球最狠之一（72 英寸腰围）；价格最低，面料与版型停在基础水平。",u:"kingsize.com"},
+{n:"Westport Big & Tall",s:"Westport 1989",r:"北美",c:"美国",f:"专营",st:"商务休闲",core:"Polo · 衬衫 · 西裤 · 高尔夫外套",p:"60–250",pmin:60,pmax:250,sz:"大码 + 高个双线",mx:5,t:"T2",d:"1989 年创立，用自有 Westport Black / Lifestyle / No-Tuck 三条线做「设计师品牌的大码专供版」，是高端大码休闲的样板。",u:"westportbigandtall.com"},
+{n:"Big Daddy Clothing",s:"Big Daddy Co.",r:"北美",c:"美国",f:"专营",st:"街头",core:"图案 T · 背心 · 短裤",p:"25–60",pmin:25,pmax:60,sz:"2XL–10XL / 2XLT–5XLT",mx:10,t:"T3",d:"以「big & bold」话术做图案 T，尺码到 10XL；北美低价图案打法的典型，也是语言上最少「减肥叙事」的一批。",u:"bigdaddyclothing.com"},
+{n:"Big Dude USA",s:"Big Style Fashions",r:"北美",c:"美国",f:"专营",st:"休闲",core:"Polo · 卫衣 · 牛仔",p:"25–60",pmin:25,pmax:60,sz:"2XL–8XL / 2XLT–8XLT",mx:8,t:"T3",d:"北美版 Big Dude，2XL 起、免运费退换，靠价格与尺码宽度获客，无品牌资产。",u:"bigdudeclothing.com"},
+{n:"Big & Tall Mart",s:"多品牌集合站",r:"北美",c:"美国",f:"专营",st:"休闲",core:"印花 T · 工装裤 · 医护制服",p:"15–80",pmin:15,pmax:80,sz:"2XL–14XL / LT–6XT / 腰至 80″",mx:14,t:"T4",d:"尺码最深（14XL、腰 80″），自有 Falcon Bay、Greystone 等；典型「尺码百货」，证明极端尺码有真实需求。",u:"bigandtallmart.com"},
+{n:"Hockerty",s:"线上 MTM",r:"北美",c:"全球",f:"延伸",st:"商务",core:"定制西装 · 衬衫",p:"299+",pmin:299,pmax:600,sz:"按量体，无上限",mx:12,t:"T2",d:"线上量体定制，极端体型唯一能拿到合身正装的路径；但周期长、需自量，解决不了日常复购。",u:"hockerty.com"},
+/* 加拿大 */
+{n:"One Bone",s:"One Bone Brand",r:"北美",c:"加拿大",f:"专营",st:"休闲",core:"T恤 · Polo · 西装外套",p:"60–150",pmin:60,pmax:150,sz:"自有码 1–5（约 2XL–6XL）",mx:6,t:"T2",d:"2018 年从 T恤 起家，把大码做成「审美」而非「尺码」：短袖口、腹部放量、下摆加长，近年最像品牌的大码新势力。",u:"onebonebrand.com"},
+{n:"George Richards Big & Tall",s:"加拿大老牌",r:"北美",c:"加拿大",f:"专营",st:"商务",core:"西装 · 衬衫 · 西裤",p:"60–300",pmin:60,pmax:300,sz:"大码 + 高个",mx:6,t:"T2",d:"加拿大的大码正装零售代表，西装与礼服是主线；门店提供改衣，客群偏 40+。",u:"georgerichards.ca"},
+{n:"Mr. Big & Tall",s:"加拿大连锁",r:"北美",c:"加拿大",f:"专营",st:"商务休闲",core:"全品类",p:"60–300",pmin:60,pmax:300,sz:"大码",mx:6,t:"T3",d:"温哥华起家的连锁，走「一站式大码男装」，代理品牌 + 自有款并行，服务重、价格中。",u:"mrbigandtall.ca"},
+/* 英国 */
+{n:"Bad Rhino",s:"UK 大码专营",r:"欧洲",c:"英国",f:"专营",st:"街头",core:"T恤 · 连帽 · 牛仔",p:"15–60",pmin:15,pmax:60,sz:"L–8XL",mx:8,t:"T3",d:"英国规模最大的大码专营品牌之一，L–8XL，审美强街头与图案；「大码≠中年」的最彻底案例，但正装缺席。",u:"badrhino.com"},
+{n:"D555",s:"Duke Clothing",r:"欧洲",c:"英国",f:"专营",st:"休闲",core:"Polo · T恤 · 夹克",p:"20–70",pmin:20,pmax:70,sz:"L–8XL",mx:8,t:"T3",d:"英国老牌大码，批发 + 零售双轨，被多家大码零售商代理；版型宽松、价格低。",u:"dukedirect.co.uk"},
+{n:"Big Clothing 4 U",s:"BC4U",r:"欧洲",c:"英国",f:"专营",st:"休闲",core:"T恤 · Polo · 牛仔 · 西装",p:"25–120",pmin:25,pmax:120,sz:"2XL–12XL",mx:12,t:"T3",d:"2015 年由 20 岁出头的创始人做出 12XL 的 DTC，是「尺码深度即流量」的经典创业样本；有西装线但薄。",u:"bigclothing4u.co.uk"},
+{n:"Big Dude Clothing",s:"UK · Big Dude",r:"欧洲",c:"英国",f:"专营",st:"休闲",core:"Polo · 卫衣 · 牛仔",p:"20–60",pmin:20,pmax:60,sz:"2XL–8XL",mx:8,t:"T3",d:"与北美 Big Dude 同名的英国品牌（不同公司），2XL–8XL，主打基础款与大码模特实拍。",u:"bigdudeclothing.co.uk"},
+{n:"High & Mighty",s:"N Brown 集团",r:"欧洲",c:"英国",f:"专营",st:"商务",core:"衬衫 · 西裤 · 西装",p:"40–200",pmin:40,pmax:200,sz:"大码 + 高个",mx:6,t:"T2",d:"1956 年由裁缝在 Hull 创立，2009 年售予 N Brown；英国「大码正装」老字号，少数把西装当主线的专营品牌。",u:"highandmighty.com"},
+{n:"Jacamo",s:"N Brown 集团",r:"欧洲",c:"英国",f:"主力",st:"休闲",core:"全品类",p:"20–120",pmin:20,pmax:120,sz:"S–6XL",mx:6,t:"T2",d:"大码为主线的目录/电商，S 起售所以记为「主力」；优势品类全（含西装与鞋），劣势是版型多为同版延伸。",u:"jacamo.co.uk"},
+{n:"Uptheir Clothing",s:"UK 大码街头",r:"欧洲",c:"英国",f:"专营",st:"街头",core:"T恤 · 卫衣 · 运动裤",p:"20–50",pmin:20,pmax:50,sz:"2XL 起",mx:7,t:"T4",d:"定位大码街头，价格极低、上新快；被多家大码零售商代理，属「量」而不属「牌」。",u:"uptheir.com"},
+/* 德语区 */
+{n:"HIRMER big & tall",s:"Hirmer Große Größen",r:"欧洲",c:"德国",f:"专营",st:"商务",core:"西装 · 衬衫 · 大衣 · 店内定制",p:"80–500",pmin:80,pmax:500,sz:"56–70 / 110–126 / 2XL–8XL",mx:8,t:"T1",d:"1989 年慕尼黑起家，欧洲最专业的大码正装店：三层门店、店内改衣与定制，西装与大衣是主线。全球唯一把大码正装做成服务业的样板。",u:"hirmer-big-tall.com"},
+{n:"JP1880",s:"Popken Fashion Group",r:"欧洲",c:"德国",f:"专营",st:"商务休闲",core:"衬衫 · 西装外套 · 西裤 · 摩托/户外线",p:"30–150",pmin:30,pmax:150,sz:"L–8XL（部分至 10XL）",mx:10,t:"T2",d:"2010 年创立，德国最大大码男装品牌之一；「腹部深度剪裁」的西装外套与西装裤是招牌，覆盖商务到摩托、户外等细分场景。",u:"jp1880.de"},
+{n:"Happy Size",s:"德国大码邮购",r:"欧洲",c:"德国",f:"专营",st:"休闲",core:"多品牌集合",p:"20–120",pmin:20,pmax:120,sz:"大码",mx:8,t:"T3",d:"德国大码邮购/电商平台，代理 HIRMER、JP1880 等专营品牌，是德语区大码的主要流量入口。",u:"happy-size.de"},
+/* 日本 */
+{n:"サカゼン Sakazen",s:"坂善商事",r:"亚洲",c:"日本",f:"专营",st:"商务",core:"西装 · 衬衫 · 西裤 · 大衣",p:"35–280",pmin:35,pmax:280,sz:"3L–9L",mx:9,t:"T2",d:"1946 年创业、做大码约 40 年、约 30 家店；日本「大码专门店」的代名词，西装是主力，量体与改衣是核心竞争力。",u:"sakazen.co.jp"},
+{n:"メンズサワ Mens Sawa",s:"爱知 · 一宫",r:"亚洲",c:"日本",f:"专营",st:"休闲",core:"全品类（含相扑体型）",p:"20–150",pmin:20,pmax:150,sz:"2L–8L（胸 110–180cm）",mx:8,t:"T3",d:"地方性专门店，尺码做到 8L、胸围 180cm；名古屋场所期间直接服务相扑部屋，是极端体型需求的活样本。",u:"—"},
+{n:"洋服のエジリ",s:"Ejiri",r:"亚洲",c:"日本",f:"专营",st:"商务",core:"西装 · 礼服",p:"60–400",pmin:60,pmax:400,sz:"大码西装",mx:7,t:"T3",d:"地方大码西装店，靠「改衣 + 婚礼/典礼」场景存活；代表日本大量不成规模但极专业的小店生态。",u:"—"},
+/* 中国 */
+{n:"英巴克",s:"中国商务大码",r:"亚洲",c:"中国",f:"专营",st:"商务",core:"衬衫 · 西装套装",p:"15–85",pmin:15,pmax:85,sz:"至 10XL（约 300 斤）",mx:10,t:"T3",d:"国内极少数以「商务大码」为定位的品牌，西装与衬衫为主，服务婚礼与职场；版型多为放码，无独立纸样体系。",u:"—"},
+{n:"panmax",s:"淘系大码潮牌",r:"亚洲",c:"中国",f:"专营",st:"街头",core:"T恤 · 卫衣 · 裤装",p:"12–45",pmin:12,pmax:45,sz:"至 5XL–6XL",mx:6,t:"T3",d:"早期淘系「小而美」大码潮牌，200 万+ 粉丝；证明大码可以靠风格而非尺码获客，价格带极低。",u:"—"},
+{n:"nmax",s:"衣品天成旗下",r:"亚洲",c:"中国",f:"专营",st:"街头",core:"T恤 · IP 联名",p:"15–60",pmin:15,pmax:60,sz:"大码",mx:6,t:"T3",d:"集团孵化的大码潮牌，靠 IP 联名与年轻化视觉切入，是「大码 + 潮玩」路线的代表。",u:"—"},
+{n:"半墨",s:"国风大码",r:"亚洲",c:"中国",f:"专营",st:"休闲",core:"衬衫 · 外套 · 国风套装",p:"15–60",pmin:15,pmax:60,sz:"至 6XL（150–290 斤）",mx:6,t:"T4",d:"唯一以中国风为主轴的大码品牌，风格差异化最明显，说明大码市场也能做审美细分。",u:"—"},
+{n:"胖哥哥 brouplus",s:"大码版型内容 + 品牌",r:"亚洲",c:"中国",f:"专营",st:"商务休闲",core:"全品类",p:"20–75",pmin:20,pmax:75,sz:"2XL–7XL（按体重 75–160kg 标码）",mx:7,t:"T2",d:"国内唯一把「版型知识」做成内容资产再卖货的品牌，用公斤标码、讲加肥加大结构；最接近「版型即品牌」的样本。",u:"brouplus.com"},
+{n:"格里森",s:"轻奢大码",r:"亚洲",c:"中国",f:"专营",st:"商务",core:"西裤 · 针织 · 衬衫",p:"30–90",pmin:30,pmax:90,sz:"XL–6XL",mx:6,t:"T3",d:"少见的「大码西裤」供给方，走轻奢商务；中国大码里唯一有正装结构意识的细分。",u:"—"},
+{n:"大牛博斯",s:"大码裤装专门",r:"亚洲",c:"中国",f:"专营",st:"商务休闲",core:"牛仔 · 休闲裤",p:"15–60",pmin:15,pmax:60,sz:"至 6XL（100–300 斤）",mx:6,t:"T4",d:"只做大码裤装的垂直卖家，裤型是核心资产；说明「单品类深挖」在大码市场可成立。",u:"—"},
+{n:"枫林馆",s:"加肥加大",r:"亚洲",c:"中国",f:"专营",st:"街头",core:"T恤 · 图案款",p:"8–45",pmin:8,pmax:45,sz:"180–330 斤",mx:8,t:"T4",d:"面向 180 斤以上超重人群，价格极低、图案夸张；是「尺码越极端、越靠价格」的极端案例。",u:"—"},
+/* 台湾 */
+{n:"BEMAX 胖胖星球",s:"台湾中大尺码",r:"亚洲",c:"中国台湾",f:"专营",st:"休闲",core:"全品类",p:"20–70",pmin:20,pmax:70,sz:"中大尺码",mx:6,t:"T3",d:"台湾较早的中大尺码专卖品牌，实体 + 电商并行，客群偏年轻；区域市场的标准样本。",u:"bemax.com.tw"},
+/* 印度 */
+{n:"JohnPride",s:"印度大码",r:"亚洲",c:"印度",f:"专营",st:"休闲",core:"衬衫 · 牛仔 · Kurta",p:"12–35",pmin:12,pmax:35,sz:"3XL–13XL",mx:13,t:"T3",d:"印度尺码最深的大码品牌（13XL），并把传统 Kurta 纳入大码供给——民族服饰是大码的真实增量场景。",u:"johnpride.in"},
+{n:"BigBanana",s:"印度大码电商",r:"亚洲",c:"印度",f:"专营",st:"休闲",core:"T恤 · 牛仔 · Kurta · 冬装",p:"10–30",pmin:10,pmax:30,sz:"2XL–10XL",mx:10,t:"T3",d:"以「一站式大码」为定位的电商，品类覆盖到冬装与民族装，价格极低。",u:"bigbananaonline.com"},
+{n:"Big & Bigger",s:"印度大码",r:"亚洲",c:"印度",f:"专营",st:"休闲",core:"衬衫 · T恤 · 裤装",p:"12–30",pmin:12,pmax:30,sz:"2XL 起",mx:8,t:"T4",d:"纯大码定位的线上品牌，主打日常基础；印度市场的新进入者样本。",u:"bignbigger.com"},
+/* 大洋洲 */
+{n:"Johnny Bigg",s:"RAG 集团",r:"大洋洲",c:"澳大利亚",f:"专营",st:"商务休闲",core:"衬衫 · 西裤 · 西装 · 婚礼线",p:"30–200",pmin:30,pmax:200,sz:"大码 + 高个",mx:7,t:"T2",d:"澳新最大大码男装连锁，有独立婚礼/典礼线，把「场合」做成产品结构；大码正装做得最完整的连锁之一。",u:"johnnybigg.com"},
+{n:"Ron Bennett Big & Tall",s:"悉尼老牌正装",r:"大洋洲",c:"澳大利亚",f:"专营",st:"优雅",core:"西装 · 礼服 · 衬衫",p:"150–600",pmin:150,pmax:600,sz:"大码正装",mx:6,t:"T2",d:"老牌正装零售商的大码线，服务婚礼与正式场合；靠店内量体与改衣，价格带最高。",u:"ronbennett.com.au"},
+/* 非洲 */
+{n:"Big & Tall Outfitters",s:"南非 · 1978",r:"非洲",c:"南非",f:"专营",st:"商务",core:"西装 · 衬衫 · 西裤 · 大码鞋",p:"40–300",pmin:40,pmax:300,sz:"大码 + 加长 + 大码鞋",mx:7,t:"T2",d:"1978 年约翰内斯堡创立，店内即改衣，西装与衬衫是主线；非洲唯一成体系的大码正装专门店。",u:"bigandtalloutfitters.co.za"},
+{n:"Eagle Clothing",s:"南非大码",r:"非洲",c:"南非",f:"专营",st:"休闲",core:"衬衫 · T恤 · 牛仔",p:"10–40",pmin:10,pmax:40,sz:"XL–10XL",mx:10,t:"T4",d:"XL–10XL 的南非大码电商，价格低、上新快；代表非洲市场的低价规模化路径。",u:"eagleclothing.co.za"},
+{n:"FEIRI",s:"南非 · 大码 T",r:"非洲",c:"南非",f:"专营",st:"休闲",core:"T恤 · 基础",p:"12–35",pmin:12,pmax:35,sz:"至 6XL",mx:6,t:"T4",d:"以「premium plus size T恤」为单一卖点，走面料升级路线；小体量但定位清晰。",u:"feiri.co.za"},
+/* 拉美 */
+{n:"Big & Tall México",s:"La Casa de las Tallas Grandes",r:"拉美",c:"墨西哥",f:"专营",st:"商务休闲",core:"衬衫 · 西装 · 休闲",p:"35–120",pmin:35,pmax:120,sz:"XL–6XL",mx:6,t:"T3",d:"CDMX 中心区实体店 + 全国发货，衬衫做到 6X；墨美边境的尺码体系错位（墨码偏小）被它直接当卖点用。",u:"—"},
+{n:"Liverpool Big & Tall",s:"百货大码专区",r:"拉美",c:"墨西哥",f:"延伸",st:"商务休闲",core:"衬衫 · 西装 · 牛仔（多品牌）",p:"30–200",pmin:30,pmax:200,sz:"至 6XL（视品牌）",mx:6,t:"T3",d:"墨西哥最大百货的大码专区，全国门店皆有。当地消费者找大码的第一站——需求被百货的放码商品吸收，这正是专营店难以规模化的原因。",u:"liverpool.com.mx"},
+{n:"Plusman Brasil",s:"圣保罗 · 大码男装专营",r:"拉美",c:"巴西",f:"专营",st:"商务",core:"衬衫 · 西装 · 西裤",p:"25–160",pmin:25,pmax:160,sz:"号型 44–78（约 2XL–8XL）",mx:8,t:"T3",d:"拉美少见的把正装做成主线的专营店：social 衬衫、大码西装与西裤齐全，号型做到 78；线下门店 + 全国电商并行。",u:"plusmanbrasil.com.br"},
+{n:"Everest Plus Size",s:"巴西 · 衬衫专深",r:"拉美",c:"巴西",f:"专营",st:"商务休闲",core:"衬衫 G1–G18 · 西裤 48–86",p:"15–70",pmin:15,pmax:70,sz:"G1–G18 / 裤腰 48–86",mx:9,t:"T4",d:"以衬衫尺码深度见长（G1–G18），西裤做到腰 86；靠 WhatsApp 下单、无官网，是拉美「深尺码 + 轻品牌」的典型。",u:"—"},
+{n:"Bigmen Brasil",s:"巴西大码电商",r:"拉美",c:"巴西",f:"专营",st:"休闲",core:"T恤 · Polo · 卫衣",p:"10–35",pmin:10,pmax:35,sz:"至 G7",mx:6,t:"T4",d:"价格最低的一档大码电商，主打基础款；巴西大码的日常供给靠这类店铺撑住，几乎没有风格主张。",u:"bigmen.com.br"},
+{n:"Big and Tall Buenos Aires",s:"布宜诺斯艾利斯 · 约 50 年",r:"拉美",c:"阿根廷",f:"专营",st:"优雅",core:"西装 · 礼服 · 城市正装",p:"50–300",pmin:50,pmax:300,sz:"XL–10XL",mx:10,t:"T3",d:"经营约半个世纪，把「大码 + 高个 + 礼服」当主业，婚礼与典礼是核心场景；拉美唯一靠正装立身的大码专营店。",u:"—"},
+{n:"MASX Chile",s:"圣地亚哥 · 真实版型",r:"拉美",c:"智利",f:"专营",st:"商务休闲",core:"衬衫 · Polo · 牛仔 · 西裤",p:"20–70",pmin:20,pmax:70,sz:"XL–7XL",mx:7,t:"T3",d:"以「calce real（真实版型）」为核心话术，公开讲「你穿 XXL 太紧不是你的错」；拉美版型意识最强的品牌，也是唯一在做尺码内容营销的。",u:"masx.cl"},
+{n:"Doble XL",s:"麦德林 · 体重标码",r:"拉美",c:"哥伦比亚",f:"专营",st:"街头",core:"T恤 · Polo · Oversize 卫衣",p:"10–35",pmin:10,pmax:35,sz:"XL–6XL",mx:6,t:"T4",d:"直接以体重标码（85–100kg 对应 XL 起），并用 oversize 廓形替代结构修改；拉美「按体重卖」的代表做法。",u:"doblexl.com"},
+{n:"Helios Tallas Grandes",s:"麦德林 · 牛仔专深",r:"拉美",c:"哥伦比亚",f:"专营",st:"休闲",core:"牛仔 · T恤 · 衬衫",p:"15–45",pmin:15,pmax:45,sz:"牛仔腰带 38–50 · 上衣 2XL–8XL",mx:8,t:"T4",d:"门店 + 全国发货，牛仔裤做到腰 50——大码最难做的品类；但版型仍是加放，无结构改动。",u:"—"},
+{n:"Todo para Gorditos",s:"哥伦比亚 · 可定制",r:"拉美",c:"哥伦比亚",f:"专营",st:"休闲",core:"T恤 · 休闲套装 · 按需定做",p:"10–40",pmin:10,pmax:40,sz:"2XL–10XL（缺码可定做）",mx:10,t:"T4",d:"尺码到 10XL，缺码可下单定做；说明拉美的大码供给实际是「小单定制」，而非库存体系——这既是成本优势也是规模上限。",u:"—"},
+{n:"Ternos Tallas Grandes Perú",s:"利马 · 大码礼服",r:"拉美",c:"秘鲁",f:"专营",st:"优雅",core:"西装 · 礼服 · 衬衫（含租赁）",p:"80–400",pmin:80,pmax:400,sz:"XL–10XL",mx:10,t:"T3",d:"利马的大码礼服裁缝店，服务婚礼、毕业典礼与面试，兼营租赁与量体定做；拉美唯一把「大码 + 礼服 + 租赁」做成闭环的形态。",u:"—"},
+{n:"Talla Grande CR",s:"圣何塞 · 一国一店",r:"拉美",c:"哥斯达黎加",f:"专营",st:"商务休闲",core:"牛仔 · 衬衫 · 内衣 · 大码鞋",p:"20–70",pmin:20,pmax:70,sz:"2XL–8XL / 42–60",mx:8,t:"T4",d:"单店 + 全国配送，连带做糖尿病袜与大码鞋；中美洲典型的「一店覆盖一国」模式，品类比尺码更宽。",u:"—"},
+{n:"Ropa Talla Extra Plus",s:"基多 · 大码专门店",r:"拉美",c:"厄瓜多尔",f:"专营",st:"休闲",core:"T恤 · 休闲 · 基础",p:"10–40",pmin:10,pmax:40,sz:"至 7XL",mx:7,t:"T4",d:"基多专门店，尺码到 7XL，靠 WhatsApp 目录与社群销售；安第斯市场的大码供给现状样本。",u:"—"},
+
+/* 拉美 · 补充 */
+{n:"Big Fashion",s:"蒙特雷 · 至 8XL",r:"拉美",c:"墨西哥",f:"专营",st:"休闲",core:"T恤 · 牛仔 · 休闲",p:"20–70",pmin:20,pmax:70,sz:"XXL–8XL",mx:8,t:"T3",d:"蒙特雷的实体大码店，尺码做到 8XL，被本地博主反复探店；墨西哥北部工业城市的「一店一城」供给形态。",u:"—"},
+{n:"Cool Size",s:"巴西 · 公斤标码",r:"拉美",c:"巴西",f:"专营",st:"休闲",core:"T恤 · 卫衣 · 基础",p:"20–50",pmin:20,pmax:50,sz:"G1–G5（105–200kg）",mx:7,t:"T4",d:"直接按公斤分段标码：G1 105–115kg、G5 175–200kg，把体重当尺码语言；拉美最彻底的「体重标码」实践。",u:"coolsize.com.br"},
+{n:"Camarón Brujo",s:"阿根廷大码电商",r:"拉美",c:"阿根廷",f:"专营",st:"休闲",core:"T恤 · 卫衣 · 牛仔 · 外套",p:"15–60",pmin:15,pmax:60,sz:"至 5XL",mx:5,t:"T4",d:"本土生产的大码电商，主打日常款至 5XL；本币定价，受通胀与进口限制影响，SKU 更新不稳定。",u:"camaronbrujo.com"},
+{n:"Tallas Grandes Chile",s:"圣地亚哥 · 实体 + 全国",r:"拉美",c:"智利",f:"专营",st:"商务休闲",core:"衬衫 · 牛仔 · 休闲",p:"20–60",pmin:20,pmax:60,sz:"XL–6XL",mx:6,t:"T4",d:"圣地亚哥实体店 + 全国快递，同样以「真实尺码」为卖点，与 MASX 构成智利市场的双寡头雏形。",u:"—"},
+{n:"Super XL Perú",s:"利马 · 按需生产",r:"拉美",c:"秘鲁",f:"专营",st:"商务",core:"Polo · 白衬衫 · 西装（按需）",p:"15–60",pmin:15,pmax:60,sz:"2XL–4XL",mx:4,t:"T4",d:"从广告 Polo 与企业衬衫的 B2B 起家，再按需接西装；秘鲁的大码供给仍以「按需生产」而非库存为主。",u:"—"},
+{n:"Bigantall Men",s:"瓜亚基尔 · 社媒店",r:"拉美",c:"厄瓜多尔",f:"专营",st:"休闲",core:"T恤 · 牛仔 · 休闲",p:"15–50",pmin:15,pmax:50,sz:"XL–5XL",mx:5,t:"T4",d:"瓜亚基尔的社媒店，WhatsApp 下单、全国发货；与基多的 Ropa Talla Extra Plus 一起构成厄瓜多尔的两点供给。",u:"—"},
+{n:"Talles Especiales UY",s:"蒙得维的亚 · 约 50 年",r:"拉美",c:"乌拉圭",f:"专营",st:"商务",core:"西装 · 衬衫 · 西裤 · 运动",p:"40–250",pmin:40,pmax:250,sz:"至 6XL",mx:6,t:"T3",d:"经营约 50 年，正装与运动双线并行，是乌拉圭唯一成体系的大码专门店；南锥体最小市场里最老的一家。",u:"—"},
+{n:"Kiabi Uruguay",s:"法国连锁 · 大码同架",r:"拉美",c:"乌拉圭",f:"延伸",st:"休闲",core:"T恤 · 卫衣 · 牛仔",p:"15–50",pmin:15,pmax:50,sz:"3XL–7XL",mx:7,t:"T4",d:"常规码与大码同架销售，尺码到 7XL 但单品库存极浅（常年单件）；「有尺码」与「有供给」的差别样本。",u:"kiabi.uy"},
+{n:"Reka",s:"圣克鲁斯 · 进口代理",r:"拉美",c:"玻利维亚",f:"专营",st:"休闲",core:"Polo · T恤 · 牛仔",p:"15–50",pmin:15,pmax:50,sz:"XL–4XL",mx:4,t:"T4",d:"圣克鲁斯的实体店，代理巴西品牌的大码线；玻利维亚的大码供给靠进口代理，没有本地版型。",u:"—"},
+{n:"Clase A",s:"亚松森 · 本土生产",r:"拉美",c:"巴拉圭",f:"专营",st:"休闲",core:"衬衫 · 牛仔 · 全品类",p:"15–50",pmin:15,pmax:50,sz:"46–80（男女同线）",mx:8,t:"T4",d:"亚松森的本土品牌，号型 46–80、男女同线生产；巴拉圭少见的「有品牌名」的大码供给。",u:"—"},
+{n:"Big & Tall Panamá",s:"巴拿马城 · 号型备货",r:"拉美",c:"巴拿马",f:"专营",st:"优雅",core:"西装 · 衬衫 · 礼服",p:"60–250",pmin:60,pmax:250,sz:"52–66 号型",mx:7,t:"T3",d:"按号型（52–66）而非字母码备货，西装单价约 170 美元；中美洲唯一走正装路线的大码店。",u:"—"},
+{n:"Barately",s:"危地马拉 · 全尺码",r:"拉美",c:"危地马拉",f:"专营",st:"休闲",core:"T恤 · 运动/战术 · 少量正装",p:"10–40",pmin:10,pmax:40,sz:"XL–7XL（0 号起全家）",mx:7,t:"T4",d:"从 0 号做到 7XL 的全家尺码店，靠 SKU 数量而非版型竞争，同时做批发。",u:"barately.store"},
+{n:"Big & Tall Guatemala",s:"危地马拉城 · 真码话术",r:"拉美",c:"危地马拉",f:"专营",st:"商务休闲",core:"衬衫 · Polo · 牛仔",p:"20–60",pmin:20,pmax:60,sz:"2XL–6XL",mx:6,t:"T4",d:"专门店，主打「2XL–6XL 是真实尺码」；中美洲把「真码」当核心话术的典型。",u:"bigandtall.com.gt"},
+{n:"Inversiones Ivonne",s:"加拉加斯 · 社媒店",r:"拉美",c:"委内瑞拉",f:"专营",st:"休闲",core:"套装 · 牛仔 · 休闲",p:"10–40",pmin:10,pmax:40,sz:"1XL–4XL",mx:4,t:"T4",d:"加拉加斯的社媒大码店，按套装卖；委内瑞拉的大码供给几乎全在 Instagram 上，无官网、无公开尺码表。",u:"—"},
+
+/* 北美 · 补充 */
+{n:"American Tall",s:"加拿大 · 高个专营",r:"北美",c:"加拿大",f:"专营",st:"商务休闲",core:"T恤 · 衬衫 · 牛仔（高个专版）",p:"30–120",pmin:30,pmax:120,sz:"LT–4XLT / 2XL–5XL",mx:5,t:"T3",d:"加拿大起家的「高个专营」，把袖长、衣长、裆深当第一变量而非单纯加宽；高个与大码在此分家，说明 tall 是一套独立版型，不是 big 的附庸。",u:"americantall.com"},
+{n:"Mark's Work Wearhouse",s:"加拿大工装连锁",r:"北美",c:"加拿大",f:"延伸",st:"休闲",core:"工装 · 牛仔 · 靴（至 4XL）",p:"20–120",pmin:20,pmax:120,sz:"至 4XL",mx:4,t:"T3",d:"全国工装连锁，大码靠常规码放大到 4XL；加拿大工薪阶层的实际大码来源，与专营店客群几乎不重叠。",u:"marks.com"},
+
+/* 欧洲 · 补充 */
+{n:"bigtex",s:"德国 · 至 14XL",r:"欧洲",c:"德国",f:"专营",st:"商务休闲",core:"衬衫 · 西装外套 · 牛仔 · 针织",p:"30–200",pmin:30,pmax:200,sz:"至 14XL",mx:14,t:"T3",d:"汉堡起家的大码专营，约 4,000 个 SKU、尺码到 14XL，含西装外套与领带；德国「全品类 + 极深尺码」的模式。",u:"bigtex.de"},
+{n:"Pfundskerl",s:"德国 · 逐件手测",r:"欧洲",c:"德国",f:"专营",st:"休闲",core:"T恤 · 卫衣 · 牛仔 · 内搭",p:"25–120",pmin:25,pmax:120,sz:"3XL–12XL",mx:12,t:"T4",d:"每件商品手工测量后公布实测尺寸，30 年经验；把「尺码不可信」直接当作产品问题来解决，是大码电商最实用的一种差异化。",u:"pfundskerl-xxl.de"},
+{n:"BIG 5XL / New Man",s:"巴黎 6 区 · 单店",r:"欧洲",c:"法国",f:"专营",st:"商务休闲",core:"衬衫 · 外套 · 牛仔",p:"50–250",pmin:50,pmax:250,sz:"XL–5XL",mx:5,t:"T3",d:"巴黎左岸的单店专门店，代理 New Man 等品牌的大码线；法国大码供给高度分散，它是少有的有门店与品牌名的样本。",u:"bignewman.com"},
+{n:"XXL4YOU",s:"比利时 · 跨境七国",r:"欧洲",c:"比利时",f:"专营",st:"休闲",core:"衬衫 · 牛仔 · 卫衣 · 工装",p:"25–120",pmin:25,pmax:120,sz:"2XL–14XL / XLT–6XLT",mx:14,t:"T3",d:"比利时线上店，2XL–14XL 加高个长度，配送比、法、荷、卢、德、奥、瑞士；用「欧盟跨境 + 预约试衣」解决大码试穿问题。",u:"xxl4you.be"},
+{n:"Extra Large Roma",s:"罗马 · 号型 58–80",r:"欧洲",c:"意大利",f:"专营",st:"优雅",core:"礼服 · 西装 · 衬衫 · 休闲",p:"60–400",pmin:60,pmax:400,sz:"号型 58–80",mx:7,t:"T3",d:"罗马市中心的专门店，按意大利号型 58–80 备货，含婚礼礼服，并提供 WhatsApp 视频逛店与定制；意式大码正装的代表。",u:"extralargeroma.it"},
+{n:"Blocco94",s:"意大利 · 线上",r:"欧洲",c:"意大利",f:"专营",st:"休闲",core:"T恤 · 卫衣 · 牛仔 · 泳装",p:"20–90",pmin:20,pmax:90,sz:"3XL–10XL",mx:10,t:"T4",d:"纯线上的意大利大码店，3XL–10XL、24/48 小时发货；与 Extra Large 的「门店 + 定制」形成两种路径对照。",u:"blocco94.it"},
+{n:"Plusman.es",s:"西班牙 · S–10XL",r:"欧洲",c:"西班牙",f:"主力",st:"商务休闲",core:"衬衫 · 外套 · 牛仔 · 西装",p:"40–200",pmin:40,pmax:200,sz:"S–10XL",mx:10,t:"T3",d:"西语区最大的大码电商，尺码从 S 一直做到 10XL，同时供货拉美；因为它保留常规码，专营度只能算「主力」，但尺码跨度是欧洲最宽的之一。",u:"plusman.es"},
+{n:"Biggymans",s:"荷兰 · 阿尔梅勒",r:"欧洲",c:"荷兰",f:"专营",st:"休闲",core:"Polo · 牛仔 · 外套",p:"20–90",pmin:20,pmax:90,sz:"2XL–14XL",mx:14,t:"T4",d:"阿尔梅勒的单店 + 线上，2XL–14XL，以「比价最便宜」为定位，24 小时发货；低地国家的大码价格战样本。",u:"biggymanskleding.nl"},
+{n:"Van Dal Mannenmode",s:"荷兰 · 19 家店",r:"欧洲",c:"荷兰",f:"主力",st:"商务",core:"西装 · 衬衫 · 西裤（四分之一码）",p:"80–350",pmin:80,pmax:350,sz:"至 4XL（含裤长/半码）",mx:4,t:"T3",d:"70 余年、19 家门店，提供「四分之一码」与裤长分档，靠店内量体卖正装；欧洲少数把半码体系做成常规服务的零售商。",u:"vdal.nl"},
+{n:"Duży Lolek",s:"波兰 · 至 14XL",r:"欧洲",c:"波兰",f:"专营",st:"休闲",core:"Polo · 卫衣 · 牛仔 · 外套",p:"15–70",pmin:15,pmax:70,sz:"2XL–14XL",mx:14,t:"T4",d:"波兰最大的大码男装线上店之一，2XL–14XL；中东欧的大码供给几乎全在线上，价格敏感、品牌弱。",u:"duzylolek.pl"},
+{n:"XLKläder",s:"瑞典 · 逐件实测",r:"欧洲",c:"瑞典",f:"专营",st:"休闲",core:"衬衫 · 针织 · 外套 · 工装",p:"30–150",pmin:30,pmax:150,sz:"至 10XL",mx:10,t:"T3",d:"北欧大码专营，公开承认「4XL 不是 4XL」，所有商品在仓库手工测量后标注实测胸围；把尺码不统一变成自己的信任资产。",u:"xlklader.se"},
+{n:"Motley Denim",s:"瑞典 · 只做大码",r:"欧洲",c:"瑞典",f:"专营",st:"街头",core:"牛仔 · T恤 · 卫衣",p:"40–160",pmin:40,pmax:160,sz:"XL–8XL",mx:8,t:"T4",d:"只卖大码的瑞典潮流店，强调「大码也该跟趋势」；北欧少见的风格驱动型大码品牌。",u:"motleydenim.se"},
+
+/* 亚洲 · 补充 */
+{n:"4XR",s:"首尔 · 至 6XL",r:"亚洲",c:"韩国",f:"专营",st:"街头",core:"卫衣 · 长外套 · 裤装",p:"25–90",pmin:25,pmax:90,sz:"至 6XL",mx:6,t:"T3",d:"首尔的大码街头品牌，版型按韩国体型重做（肩宽窄、腹围大），线上做到 6XL；韩系大码把「好看」放在第一位。",u:"4xr.co.kr"},
+{n:"John Clark",s:"韩国 · 大码购物中心",r:"亚洲",c:"韩国",f:"专营",st:"商务休闲",core:"衬衫 · 西裤 · 针织 · 外套",p:"30–100",pmin:30,pmax:100,sz:"M–4XL",mx:4,t:"T3",d:"面向 20–40 岁男性的韩国大码购物站，M–4XL，衬衫与西裤是主力；韩国大码的「通勤化」比日本更早。",u:"—"},
+{n:"AOKI 大尺码",s:"日本西装连锁大码线",r:"亚洲",c:"日本",f:"延伸",st:"商务",core:"西装 · 衬衫 · 西裤",p:"150–500",pmin:150,pmax:500,sz:"至 4L（体码）",mx:4,t:"T3",d:"日本最大西装连锁的大码线，用「体码 + 号型」双标；与 サカゼン 的差别在于它是连锁的延伸线，而非专营纸样。",u:"aoki-style.com"},
+{n:"plussize.pk",s:"巴基斯坦 · 至 8XL",r:"亚洲",c:"巴基斯坦",f:"专营",st:"民族",core:"衬衫 · 卫衣 · Shalwar Kameez",p:"8–40",pmin:8,pmax:40,sz:"XL–8XL",mx:8,t:"T3",d:"巴基斯坦专营大码品牌，把 Shalwar Kameez 与 Kurta 纳入大码供给到 8XL；南亚的大码增量在民族服饰而不是正装。",u:"plussize.pk"},
+{n:"Export Leftovers (elo)",s:"巴基斯坦 · 出口尾货",r:"亚洲",c:"巴基斯坦",f:"延伸",st:"休闲",core:"T恤 · 卫衣 · 牛仔",p:"5–30",pmin:5,pmax:30,sz:"2XL–10XL",mx:10,t:"T4",d:"以出口尾货模式做大码，2XL–10XL、价格极低；尺码深度靠「捡货」而非版型，是南亚最典型的供给形态。",u:"exportleftovers.com"},
+{n:"Maxwear",s:"菲律宾 · 百货渠道",r:"亚洲",c:"菲律宾",f:"专营",st:"休闲",core:"Polo · T恤 · 休闲裤",p:"10–40",pmin:10,pmax:40,sz:"1XL–5XL / 腰 38–46",mx:5,t:"T3",d:"菲律宾本地大码品牌，通过 SM 百货铺货，1XL–5XL；渠道比品牌更强势，是东南亚大码的普遍结构。",u:"—"},
+{n:"Ultimo",s:"菲律宾 · 大码专线",r:"亚洲",c:"菲律宾",f:"专营",st:"商务休闲",core:"衬衫 · Polo · 西裤",p:"15–50",pmin:15,pmax:50,sz:"1XL–5XL / 腰 38–46",mx:5,t:"T4",d:"菲律宾较早的男装大码专线，覆盖通勤衬衫与西裤；与 Maxwear 一起构成当地极有限的专营供给。",u:"—"},
+{n:"OM Plus Size",s:"曼谷 · 批发市场起家",r:"亚洲",c:"泰国",f:"专营",st:"休闲",core:"T恤 · 衬衫 · 休闲裤",p:"10–40",pmin:10,pmax:40,sz:"XL–4XL",mx:4,t:"T4",d:"曼谷 Krung Thong Plaza 的设计师店，按泰国体型开版、可小批量生产；东南亚大码靠「批发市场 + 设计师」而非品牌连锁。",u:"omplussize.com"},
+
+/* 中东 */
+{n:"Big & Tall Dubai",s:"迪拜 · GCC 供货",r:"中东",c:"阿联酋",f:"专营",st:"商务休闲",core:"衬衫 · 亚麻 · Polo · 牛仔",p:"40–200",pmin:40,pmax:200,sz:"至 6XL",mx:6,t:"T3",d:"迪拜的大码专营，主打亚麻与轻薄面料以适配高温，向 GCC 各国发货；中东大码被气候与礼服场景同时定义。",u:"bigtallstores.com"},
+{n:"Suitable",s:"迪拜 · 欧洲品牌代理",r:"中东",c:"阿联酋",f:"专营",st:"商务",core:"衬衫 · Polo · 西装",p:"60–300",pmin:60,pmax:300,sz:"3XL–7XL",mx:7,t:"T4",d:"迪拜线上店，代理欧洲大码品牌到 7XL，客群以外派与本地商务人士为主。",u:"suitable.ae"},
+{n:"Big Boyz Collection",s:"迪拜 · 本地品牌",r:"中东",c:"阿联酋",f:"专营",st:"休闲",core:"T恤 · Polo · 牛仔",p:"25–90",pmin:25,pmax:90,sz:"至 5XL",mx:5,t:"T4",d:"迪拜本地大码品牌，全 UAE 免费配送，主打「big & tall 也能穿得干净」；中东少见的自有品牌而非代理。",u:"bigboyzcollection.com"},
+{n:"Big Men",s:"耶路撒冷 · 含新郎礼服",r:"中东",c:"以色列",f:"专营",st:"优雅",core:"西装 · 礼服 · 衬衫",p:"60–350",pmin:60,pmax:350,sz:"大码号型",mx:6,t:"T4",d:"耶路撒冷的专门店，兼做新郎与宗教礼服的大码定制；以色列的大码正装需求由婚礼与宗教场合驱动。",u:"bigmen2002.co.il"},
+
+/* 非洲 · 补充 */
+{n:"ÀSSIÀN",s:"拉各斯 · 设计品牌",r:"非洲",c:"尼日利亚",f:"主力",st:"优雅",core:"衬衫 · 两件套 · 民族面料",p:"40–150",pmin:40,pmax:150,sz:"S–3XL",mx:3,t:"T4",d:"拉各斯的设计师品牌，用本地面料做西装与两件套，尺码只到 3XL；「设计力」与「尺码深度」在非洲尚未合并——这既是缺口，也是进入门槛最低的位置。",u:"—"},
+
+/* 大洋洲 · 补充 */
+{n:"Big Men's Clothing NZ",s:"新西兰 · 1972",r:"大洋洲",c:"新西兰",f:"专营",st:"商务休闲",core:"衬衫 · 西装 · 牛仔 · 大码鞋",p:"30–200",pmin:30,pmax:200,sz:"2XL–15XL / 裤腰至 187cm",mx:15,t:"T3",d:"1972 年开业、南半球最早做线上大码的店，尺码到 15XL，并为每个品牌单独公布实测表；尺码最深的国家级专营之一。",u:"bigmensclothing.co.nz"},
+{n:"Beggs Big Mens",s:"奥克兰 · 1933",r:"大洋洲",c:"新西兰",f:"专营",st:"商务",core:"西装 · 衬衫 · 外套",p:"50–300",pmin:50,pmax:300,sz:"至 8XL",mx:8,t:"T3",d:"1933 年创立、新西兰自营的家族店，代理欧洲品牌并做礼服；老铺式服务，尺码到 8XL。",u:"—"},
+{n:"Big Man Clothing",s:"新西兰 · 至 9XL",r:"大洋洲",c:"新西兰",f:"专营",st:"休闲",core:"T恤 · 卫衣 · 牛仔",p:"25–100",pmin:25,pmax:100,sz:"2XL–9XL",mx:9,t:"T4",d:"线上专营，2XL–9XL，正装与休闲都做；新西兰三家专营店并存，说明小市场的密度也可能很高。",u:"bigmanclothing.co.nz"},
+
+/* 北美 · 二轮补充 */
+{n:"Strongsize",s:"美国 · 自建版型",r:"北美",c:"美国",f:"专营",st:"休闲",core:"T恤 · 卫衣 · 基础",p:"30–90",pmin:30,pmax:90,sz:"XL–8XL",mx:8,t:"T3",d:"从零为大体重开发版型的基础款品牌，宣称「不是把 L 放大」，加长下摆、加固缝线；DTC 模式，正面打 DXL 的私标。",u:"strongsize.com"},
+{n:"Berle",s:"美国 · 裤装 腰 50–60",r:"北美",c:"美国",f:"主力",st:"商务",core:"西裤 · 卡其 · 礼服裤",p:"60–200",pmin:60,pmax:200,sz:"腰 30–44 常规 / 50–60 大码",mx:6,t:"T3",d:"美国老牌裤装厂，把「腰围 50–60 英寸 + 短/长裆（rise）」做成独立尺码表；大码最难做的品类里，它是少数从纸样层面解决裆深与臀围的品牌。",u:"berle.com"},
+{n:"Cubavera",s:"美国 · 拉美裔衬衫",r:"北美",c:"美国",f:"主力",st:"优雅",core:"Guayabera · 亚麻衬衫 · 大码西裤",p:"40–135",pmin:40,pmax:135,sz:"1X–5X / LT–5XLT",mx:5,t:"T3",d:"把 Big（1X–5X）与 Tall（LT–5XLT）分成两张独立尺码表、款式同步而非缩水；在「大码只能穿基础款」的默认里，它是反例。",u:"cubavera.com"},
+{n:"Men's Wearhouse / Jos. A. Bank B&T",s:"美国正装连锁大码线",r:"北美",c:"美国",f:"延伸",st:"商务",core:"西装 · 衬衫 · 礼服（至 60 胸围）",p:"100–500",pmin:100,pmax:500,sz:"至 60 胸围 / 54 腰",mx:6,t:"T3",d:"全美最大正装连锁的大码线，靠 60 胸围与店内改衣覆盖婚礼场景；但纸样仍是常规版放大，靠裁缝补结构。",u:"menswearhouse.com"},
+
+/* 加拿大 · 补充 */
+{n:"Moores Clothing",s:"加拿大 · 100+ 店",r:"北美",c:"加拿大",f:"延伸",st:"商务",core:"西装 · 衬衫 · 礼服（含租赁）",p:"150–500",pmin:150,pmax:500,sz:"至 60 胸围 / 54 腰 / 加长版",mx:6,t:"T3",d:"加拿大最大的男装连锁，每家店都设大码区，西装胸围到 60、腰 54，并提供礼服租赁；婚礼场景的实际入口。",u:"mooresclothing.ca"},
+
+/* 英国 · 补充 */
+{n:"Big Tall Order",s:"布里斯托 · 含鞋履",r:"欧洲",c:"英国",f:"专营",st:"商务休闲",core:"衬衫 · 卫衣 · 牛仔 · 大码鞋",p:"25–120",pmin:25,pmax:120,sz:"3XL–8XL / 至 4XLT / 鞋至 UK15",mx:8,t:"T3",d:"英国专营线上店，男装到 8XL、高个线到 4XLT，并连带做大码鞋（UK15）；把「衣服 + 鞋」一起解决，是大码购物最常断掉的一环。",u:"bigtallorder.com"},
+
+/* 对照 · 延伸线 */
+{n:"Polo Ralph Lauren B&T",s:"设计师品牌大码线",r:"北美",c:"美国",f:"延伸",st:"优雅",core:"Polo · 衬衫 · 针织",p:"60–200",pmin:60,pmax:200,sz:"2XLB–4XLB / 2XLT–4XLT",mx:4,t:"T1",d:"大码线做得最像独立产品线的设计师品牌；版型为放码 + 局部调整，尺码止于 4XL，价格含明显品牌溢价。",u:"ralphlauren.com"},
+{n:"Tommy Hilfiger B&T",s:"设计师品牌大码线",r:"北美",c:"美国",f:"延伸",st:"商务休闲",core:"Polo · 衬衫 · 外套",p:"50–180",pmin:50,pmax:180,sz:"2XLB–4XLB",mx:4,t:"T2",d:"走百货与奥莱渠道，尺码到 4XL；典型「logo 税 + 尺码税」叠加，被大码社区诟病最多的一类。",u:"tommy.com"},
+{n:"Old Navy B&T",s:"快时尚延伸线",r:"北美",c:"美国",f:"延伸",st:"休闲",core:"T恤 · 牛仔 · 短裤",p:"15–60",pmin:15,pmax:60,sz:"2XLB–4XLB",mx:4,t:"T3",d:"快时尚大码线的代表：价格最低、尺码定义宽松、版型为放大；证明「便宜」解决不了合身。",u:"oldnavy.gap.com"},
+{n:"boohooMAN Plus",s:"快时尚延伸线",r:"欧洲",c:"英国",f:"延伸",st:"街头",core:"T恤 · 卫衣 · 套装",p:"15–60",pmin:15,pmax:60,sz:"XL–5XL",mx:5,t:"T4",d:"上新最快的大码街头供给，尺码到 5XL；视觉年轻、结构最弱，退货率是大码电商的痛点样本。",u:"boohooman.com"},
+{n:"ASOS Design Big & Tall",s:"快时尚延伸线",r:"欧洲",c:"英国",f:"延伸",st:"街头",core:"衬衫 · 外套 · 套装",p:"25–90",pmin:25,pmax:90,sz:"2XL–6XL",mx:6,t:"T3",d:"唯一把大码做得「有设计感」的快时尚线，尺码到 6XL；但版型仍为放码，尺码信任度低。",u:"asos.com"},
+{n:"Amazon Essentials B&T",s:"平台自有品牌",r:"北美",c:"美国",f:"延伸",st:"休闲",core:"Polo · 卫衣 · 裤装",p:"15–45",pmin:15,pmax:45,sz:"2XLB–6XLB",mx:6,t:"T4",d:"平台型大码供给，价格与尺码同时压到底；是「尺码商」模式的终局形态，也是专营品牌的价格天花板。",u:"amazon.com"}
+];
+
+const R = {brand:"n",sub:"s",region:"r",market:"c",focus:"f",style:"st",core:"core",price:"p",pmin:"pmin",pmax:"pmax",sz:"sz",mx:"mx",tier:"t",basis:"d",url:"u"};
+const REGIONS = ["北美","欧洲","亚洲","中东","大洋洲","非洲","拉美"];
+const state = {market:"all",region:"all",focus:"all",style:"all",price:"all",q:"",sort:"default",view:"table"};
+
+/* ---------- 判定标准 ---------- */
+const FOCUS_DEFS = [
+  ["专营","从第一条产品线起只做大码／高个，尺码下限自 L–2XL 起，不含常规码；纸样为大体型单独开发，这是判断「是不是大码品牌」的硬线。"],
+  ["主力","大码是主线但仍保留常规码（如 S–6XL）。优势在品类齐全（含西装与鞋），弱点是版型多为同版延伸。"],
+  ["延伸","常规品牌加出的大码线，尺码多止于 4XL–6XL，版型为放码。仅作对照，说明「有大码」与「做大码」的差别。"]
+];
+const STYLE_DEFS = [
+  ["商务","西装 · 衬衫 · 西裤构成本体，把正装当主业，服务婚礼、典礼与职场，常配店内改衣与量体。"],
+  ["商务休闲","衬衫 · 西裤 · 西装外套可拆开穿，正装与日常各一半，价格带落在中段，是专营品牌最常见的定位。"],
+  ["休闲","T恤 · Polo · 卫衣 · 牛仔的基础组合，无强风格主张，靠尺码宽度、价格与上新速度竞争。"],
+  ["街头","图案 T、卫衣、运动裤与夸张视觉，主张「大码≠中年」，客群偏年轻，价格极低。"],
+  ["优雅","高单价正装与礼服，靠面料、手工与改衣服务建立识别，客群偏正式场合与年长。"],
+  ["民族","把本地服饰形制（Kurta、国风套装）纳入大码供给，风格与尺码同时做细分。"]
+];
+function renderDefs(){
+  const fc={}, sc={}, dc={};
+  DATA.forEach(d=>{
+    fc[d[R.focus]]=(fc[d[R.focus]]||0)+1;
+    sc[d[R.style]]=(sc[d[R.style]]||0)+1;
+    const b = depthBucket(d[R.mx]);
+    dc[b]=(dc[b]||0)+1;
+  });
+  document.getElementById("focusGrid").innerHTML = FOCUS_DEFS.map(([n,t])=>
+    `<div class="def"><b>${n}</b><span>${t}</span><i>${fc[n]||0}</i></div>`).join("");
+  document.getElementById("styleGrid").innerHTML = STYLE_DEFS.filter(([n])=>sc[n]).map(([n,t])=>
+    `<div class="def"><b>${n}</b><span>${t}</span><i>${sc[n]||0}</i></div>`).join("");
+  const order=["至 6XL","7–8XL","9–10XL","11XL 以上"];
+  document.getElementById("depthList").innerHTML =
+    `<span style="border:0;background:none;color:var(--ink-2)">最大码分布：</span>` +
+    order.filter(b=>dc[b]).map(b=>`<span>${b} · ${dc[b]}</span>`).join("");
+  document.getElementById("railN").textContent =
+    DATA.length + " BRANDS · " + new Set(DATA.map(d=>d[R.market])).size + " MARKETS";
+}
+renderDefs();
+
+function depthBucket(mx){
+  if(mx>=11) return "11XL 以上";
+  if(mx>=9) return "9–10XL";
+  if(mx>=7) return "7–8XL";
+  return "至 6XL";
+}
+function depthLabel(d){
+  if(d[R.brand].indexOf("Hockerty")===0) return "按量体 · 无上限";
+  return "最大 至 " + d[R.mx] + "XL";
+}
+
+/* ---------- 初始化导航 ---------- */
+const mktCount = {};
+DATA.forEach(d=>{ mktCount[d[R.market]]=(mktCount[d[R.market]]||0)+1; });
+const mktOrder = Object.keys(mktCount).sort((a,b)=>mktCount[b]-mktCount[a]);
+
+const mktNav = document.getElementById("mktNav");
+mktNav.innerHTML += `<button class="nav-item on" data-mkt="all">
+   <span class="nm"><span class="dot"></span>全部市场</span><span class="ct">${DATA.length}</span></button>` +
+  mktOrder.map(m=>
+  `<button class="nav-item" data-mkt="${m}">
+     <span class="nm"><span class="dot"></span>${m}</span>
+     <span class="ct">${mktCount[m]}</span>
+   </button>`).join("");
+
+const focusNav = document.getElementById("focusNav");
+function renderFocusNav(){
+  const base = DATA.filter(d=> state.market==="all" || d[R.market]===state.market);
+  const c={}; base.forEach(d=>c[d[R.focus]]=(c[d[R.focus]]||0)+1);
+  focusNav.innerHTML = `<div class="nav-label">专营度 / Focus</div>` +
+    `<button class="nav-item${state.focus==="all"?" on":""}" data-foc="all">
+       <span class="nm"><span class="dot"></span>全部专营度</span><span class="ct">${base.length}</span></button>` +
+    ["专营","主力","延伸"].filter(f=>c[f]).map(f=>
+      `<button class="nav-item${state.focus===f?" on":""}" data-foc="${f}">
+         <span class="nm"><span class="dot"></span>${f}</span><span class="ct">${c[f]}</span>
+       </button>`).join("");
+}
+renderFocusNav();
+
+const mktSel = document.getElementById("mktSel");
+mktSel.innerHTML = `<option value="all">全部市场 · ${DATA.length}</option>` +
+  mktOrder.map(m=>`<option value="${m}">${m} · ${mktCount[m]}</option>`).join("");
+
+/* ---------- 工具条高度 ---------- */
+function syncToolsH(){
+  const t = document.querySelector(".tools");
+  if(!t) return;
+  document.documentElement.style.setProperty("--tbh", (t.offsetHeight + 3) + "px");
+}
+window.addEventListener("resize", syncToolsH);
+syncToolsH();
+
+/* ---------- 过滤 ---------- */
+const FOCUS_ORDER = {"专营":0,"主力":1,"延伸":2};
+function inPrice(d,b){
+  if(b==="all") return true;
+  const mx=d[R.pmax];
+  if(b==="p1") return mx<80;
+  if(b==="p2") return mx>=80 && mx<=200;
+  if(b==="p3") return mx>200 && mx<=450;
+  if(b==="p4") return mx>450;
+  return true;
+}
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  let out = DATA.filter(d=>{
+    if(state.market!=="all" && d[R.market]!==state.market) return false;
+    if(state.region!=="all" && d[R.region]!==state.region) return false;
+    if(state.focus!=="all" && d[R.focus]!==state.focus) return false;
+    if(state.style!=="all" && d[R.style]!==state.style) return false;
+    if(!inPrice(d,state.price)) return false;
+    if(!q) return true;
+    return (d[R.brand]+" "+d[R.sub]+" "+d[R.market]+" "+d[R.region]+" "+d[R.focus]+" "+d[R.style]+" "+d[R.core]+" "+d[R.sz]+" "+d[R.basis]).toLowerCase().includes(q);
+  });
+  if(state.sort==="focus") out.sort((a,b)=>(FOCUS_ORDER[a[R.focus]]-FOCUS_ORDER[b[R.focus]]) || (b[R.mx]-a[R.mx]) || a[R.brand].localeCompare(b[R.brand]));
+  else if(state.sort==="depth") out.sort((a,b)=>b[R.mx]-a[R.mx] || a[R.brand].localeCompare(b[R.brand]));
+  else if(state.sort==="price") out.sort((a,b)=>a[R.pmin]-b[R.pmin] || a[R.brand].localeCompare(b[R.brand]));
+  else if(state.sort==="az") out.sort((a,b)=>a[R.brand].localeCompare(b[R.brand]));
+  return out;
+}
+
+/* ---------- 渲染 ---------- */
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function stylePill(d){
+  return d[R.style] ? `<span class="m" data-st="${esc(d[R.style])}">${esc(d[R.style])}</span>` : "";
+}
+function link(url){
+  if(!url || url==="—") return `<span class="lk dim">—</span>`;
+  const full = url.indexOf("http")===0 ? url : "https://" + url;
+  return `<a class="lk" href="${esc(full)}" target="_blank" rel="noopener">${esc(url)}<i>↗</i></a>`;
+}
+
+const wrap = document.getElementById("listWrap");
+
+function render(){
+  const rows = filtered();
+  document.getElementById("shown").textContent = rows.length;
+  document.getElementById("total").textContent = DATA.length;
+
+  const chips = document.getElementById("chips");
+  const parts = [];
+  if(state.market!=="all") parts.push(`<button class="chip on" data-clear="market">${esc(state.market)} ×</button>`);
+  if(state.region!=="all") parts.push(`<button class="chip on" data-clear="region">${esc(state.region)} ×</button>`);
+  if(state.focus!=="all") parts.push(`<button class="chip on" data-clear="focus">${esc(state.focus)} ×</button>`);
+  if(state.style!=="all") parts.push(`<button class="chip on" data-clear="style">${esc(state.style)} ×</button>`);
+  if(state.price!=="all") parts.push(`<button class="chip on" data-clear="price">${esc(PRICE_LABEL[state.price])} ×</button>`);
+  if(state.q) parts.push(`<button class="chip on" data-clear="q">“${esc(state.q)}” ×</button>`);
+  chips.innerHTML = parts.join("") || `<span class="chip" style="border:0;color:var(--line-strong);cursor:default">全部条目</span>`;
+
+  if(!rows.length){
+    wrap.innerHTML = `<div class="empty"><b>没有匹配的条目</b>换个关键词，或点上面的标签清除筛选。</div>`;
+    return;
+  }
+
+  if(state.view==="table"){
+    wrap.innerHTML = `<table class="tbl">
+      <thead><tr>
+        <th style="width:15%">品牌 / Brand</th>
+        <th style="width:9.5%">市场 / Market</th>
+        <th style="width:7.5%">专营度</th>
+        <th style="width:9.5%">风格 / Style</th>
+        <th style="width:15%">核心品类 · 尺码</th>
+        <th style="width:21%">判定依据 / Basis</th>
+        <th style="width:8%">价格带</th>
+        <th style="width:5%">档位</th>
+        <th style="width:9.5%">入口 / Source</th>
+      </tr></thead><tbody>` +
+      rows.map((d,i)=>{
+        const an = i<26 ? ` class="anim" style="animation-delay:${i*9}ms"` : "";
+        return `<tr${an}>
+          <td class="c-brand brand">${esc(d[R.brand])}<span class="sub">${esc(depthLabel(d))}</span></td>
+          <td class="c-mkt"><span class="region-tag r-${esc(d[R.region])}">${esc(d[R.region])}</span>${esc(d[R.market])}</td>
+          <td class="c-foc"><span class="foc f-${esc(d[R.focus])}">${esc(d[R.focus])}</span></td>
+          <td class="c-sty"><div class="sty">${stylePill(d)}</div></td>
+          <td class="c-core">${esc(d[R.core])}<span class="sub">${esc(d[R.sz])}</span></td>
+          <td class="c-basis"><div class="basis-txt" title="${esc(d[R.basis])}">${esc(d[R.basis])}</div></td>
+          <td class="c-price"><span class="price">${esc(d[R.price])}<em>USD</em></span></td>
+          <td class="c-tier"><span class="tier t-${esc(d[R.tier])}">${esc(d[R.tier])}</span></td>
+          <td class="c-link">${link(d[R.url])}</td>
+        </tr>`;
+      }).join("") + `</tbody></table>`;
+  }else{
+    wrap.innerHTML = `<div class="cards">` + rows.map((d,i)=>{
+      const cls = i<30 ? "card anim" : "card";
+      return `<div class="${cls}" data-st="${esc(d[R.style])}" style="${i<30?`animation-delay:${i*7}ms`:""}">
+        <div class="card-top">
+          <div>
+            <h3>${esc(d[R.brand])}</h3>
+            <div class="meta">${esc(d[R.region])} · ${esc(d[R.market])} · ${esc(d[R.focus])}</div>
+          </div>
+          <span class="tier t-${esc(d[R.tier])}">${esc(d[R.tier])}</span>
+        </div>
+        <div class="core">${esc(d[R.core])}<br><span style="color:var(--muted);font-size:11px">${esc(d[R.sz])} · ${esc(depthLabel(d))}</span></div>
+        <div class="foot">
+          <div class="sty">${stylePill(d)}</div>
+          <span class="price">${esc(d[R.price])}<em>USD</em></span>
+        </div>
+        <div class="basis"><b>判定依据 / Basis</b>${esc(d[R.basis])}</div>
+        <div class="foot" style="border:0;padding-top:10px;justify-content:flex-start;gap:16px">
+          ${link(d[R.url])}
+        </div>
+      </div>`;
+    }).join("") + `</div>`;
+  }
+}
+
+const PRICE_LABEL = {p1:"上限 <80 USD",p2:"80–200 USD",p3:"200–450 USD",p4:"450 USD 以上"};
+
+/* ---------- 交互 ---------- */
+document.getElementById("q").addEventListener("input", e=>{state.q=e.target.value;render();});
+document.getElementById("regSel").addEventListener("change", e=>{state.region=e.target.value;render();});
+document.getElementById("styleSel").addEventListener("change", e=>{state.style=e.target.value;render();});
+document.getElementById("priceSel").addEventListener("change", e=>{state.price=e.target.value;render();});
+document.getElementById("sortSel").addEventListener("change", e=>{state.sort=e.target.value;render();});
+mktSel.addEventListener("change", e=>{state.market=e.target.value;syncMktNav();renderFocusNav();render();});
+
+document.getElementById("viewSeg").addEventListener("click", e=>{
+  const b = e.target.closest("button[data-view]"); if(!b) return;
+  state.view = b.dataset.view;
+  [...e.currentTarget.children].forEach(x=>x.classList.toggle("on", x===b));
+  render();
+});
+
+function syncMktNav(){
+  document.querySelectorAll("#mktNav .nav-item").forEach(x=>
+    x.classList.toggle("on", x.dataset.mkt===state.market));
+}
+document.getElementById("mktNav").addEventListener("click", e=>{
+  const b = e.target.closest("[data-mkt]"); if(!b) return;
+  state.market = b.dataset.mkt;
+  mktSel.value = state.market;
+  syncMktNav(); renderFocusNav(); render();
+});
+document.getElementById("focusNav").addEventListener("click", e=>{
+  const b = e.target.closest("[data-foc]"); if(!b) return;
+  state.focus = b.dataset.foc;
+  renderFocusNav(); render();
+});
+
+document.getElementById("chips").addEventListener("click", e=>{
+  const b = e.target.closest("[data-clear]"); if(!b) return;
+  const k = b.dataset.clear;
+  if(k==="q"){state.q="";document.getElementById("q").value="";}
+  if(k==="market"){state.market="all";mktSel.value="all";syncMktNav();renderFocusNav();}
+  if(k==="region"){state.region="all";document.getElementById("regSel").value="all";}
+  if(k==="focus"){state.focus="all";renderFocusNav();}
+  if(k==="style"){state.style="all";document.getElementById("styleSel").value="all";}
+  if(k==="price"){state.price="all";document.getElementById("priceSel").value="all";}
+  render();
+});
+
+document.addEventListener("keydown", e=>{
+  if(e.key==="/" && document.activeElement.tagName!=="INPUT"){
+    e.preventDefault(); document.getElementById("q").focus();
+  }
+  if(e.key==="Escape" && document.activeElement.id==="q"){
+    document.getElementById("q").value=""; state.q=""; render();
+  }
+});
+
+render();
+</script>
+</body>
+</html>
